@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>Categorias</title>
+</head>
+<body>
+Editando: #<span th:text="${categoriaToEdit.id}">Id</span>
+<form action="#" th:action="@{/editarCategoria/{id}(id=${categoriaToEdit.id})}" th:object="${categoriaToEdit}" method="post">
+    <label for="name">Nombre</label>
+    <input type="text" th:field="*{name}" id="name">
+     <br/>
+    <input type="submit" value="Actualizar categoria">   
+</form>
+</body>
+</html>

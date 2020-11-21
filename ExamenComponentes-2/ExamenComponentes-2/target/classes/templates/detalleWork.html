@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>TeCaSa - Workshop details</title>
+</head>
+<body>
+<h3>Detalles</h3>
+	Nombre:<span th:text="${newWork.name}">Nombre</span><br/>
+	Tiempo:<span th:text="${newWork.tiempoTotal}">Tiempo</span><br/>
+	Autor:<span th:text="${newWork.autor}">Autor</span><br/>
+	Objetivo <span th:text="${newWork.objetivo}">Objetivo</span><br/>
+	KeyWord <span th:text="${newWork.keyWord}">KeyWord</span></li>
+<br/>
+    Tareas:
+    <div th:each="entry : ${newWork.tareas}">
+    	<ul>
+    		<li>Nombre: <span th:text="${entry.name}">Nombre</span><br>
+    			Descripcion: <span th:text="${entry.descripcion}">Descripcion</span><br>
+    				Texto: <span th:text="${entry.texto}">Texto</span></li>
+    	</ul>
+    </div>
+    <a th:href="@{/registrarActividad/{id}(id=${newWork.id})}">Registrar tarea</a><br>
+    <a href="/">Devolverme al inicio</a>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>TeCaSa - Search</title>
+</head>
+<body>
+<h3>Buscar:</h3>
+<h4>Por name:</h4>
+<form action="#" th:action="@{/listarNombre}" th:object="${workshop}" method="get" id="form1">
+    <label for="name">Nombre</label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+         <input type="submit" th:href="@{/listarNombre/{name}(name=${workshop.name})}" value="Search">
+</form>
+
+<h4>Por key:</h4>
+<form action="#" th:action="@{/listarKey}" th:object="${workshop}" method="get" id="form1">
+    <label for="keyWord">Key</label>
+    <input type="text" th:field="*{keyWord}" id="keyWord">
+    <br/>
+         <input type="submit" th:href="@{/listarKey/{keyWord}(keyWord=${workshop.keyWord})}" value="Search">
+</form>
+
+<h4>Por categoria:</h4>
+<form action="#" th:action="@{/listarCategoria}" th:object="${workshop}" method="get" id="form2">
+   <label for="categoria">Categoria</label>
+    <select name="categoria" id="categoria"  >
+    <option th:field="*{categoria}" th:each="entry : ${categoria}" th:value="${entry.name}" th:text="${entry.name}"></option>
+    </select>
+
+<br/>
+         <input type="submit" th:href="@{/listarCategoria/{categoria}(categoria=${workshop.categoria})}" value="Search">
+</form>
+<br/>
+<h4>Por autor:</h4>
+<form action="#" th:action="@{/listarAutor}" th:object="${workshop}" method="get" id="form3">
+    <label for="category">Autor</label>
+
+    <select type="text" th:field="*{autor}" id="author">
+        <option value="Chica Bellota">Chica Bellota</option>
+        <option value="Chica Burbuja">Chica Burbuja</option>
+        <option value="Chica Bombon">Chica Bombon</option>
+    </select>
+    <br/>
+    <input type="submit" th:href="@{/listarAutor/{autor}(autor=${workshop.autor})}" value="Search">
+</form>
+
+<a href="/">Devolverme al inicio</a>
+</body>
+</html>

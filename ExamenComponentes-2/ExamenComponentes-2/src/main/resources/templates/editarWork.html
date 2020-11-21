@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en-US" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="Content-Type" content="text/html"></meta>
+<title>TeCaSa - Editar workshop</title>
+</head>
+<body>
+<h3>Editando: #<span th:text="${workshopToEdit.id}">Id</span></h3>
+<form action="#" th:action="@{/editarWork/{id}(id=${workshopToEdit.id})}" th:object="${workshopToEdit}" method="post">
+    <label for="name">Nombre</label>
+    <input type="text" th:field="*{name}" id="name"><br>
+        <label for="name">Autor</label>
+    <input type="text" th:field="*{autor}" id="author"><br>
+    <label for="name">Objectivo</label>
+    <input type="text" th:field="*{objetivo}" id="objetivo"><br>
+    <label for="categoria">Categoria</label>
+  
+         <br/>
+    <label for="keyWord">Keywords</label>
+    <input type="text" th:field="*{keyWord}" id="keyWord">
+    <br/>
+    <select name="categoria" id="categoria" th:field="*{categoria}" >
+  <option th:value="*{categoria}" th:text="*{categoria}" disabled></option>
+<option th:each="entry : ${categoria}" th:value="${entry.name}" th:text="${entry.name}"></option>
+    </select><br>   
+     <input type="submit" value="Save Workshop"> 
+</form>
+
+</body>
+</html>
